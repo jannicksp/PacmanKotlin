@@ -5,7 +5,9 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.widget.TextView
 import java.util.ArrayList
-
+import android.util.Log
+import android.widget.Toast
+import java.util.*
 
 /**
  *
@@ -18,6 +20,7 @@ class Game(private var context: Context,view: TextView) {
         private var points : Int = 0
         //bitmap of the pacman
         var pacBitmap: Bitmap
+        var coinBitmap: Bitmap
         var pacx: Int = 0
         var pacy: Int = 0
 
@@ -37,6 +40,8 @@ class Game(private var context: Context,view: TextView) {
     //it's a good place to initialize our images.
     init {
         pacBitmap = BitmapFactory.decodeResource(context.resources, R.drawable.pacman)
+        coinBitmap = BitmapFactory.decodeResource(context.resources, R.drawable.goldcoin)
+
 
     }
 
@@ -47,8 +52,17 @@ class Game(private var context: Context,view: TextView) {
     //TODO initialize goldcoins also here
     fun initializeGoldcoins()
     {
-        //DO Stuff to initialize the array list with some coins.
+        var minX: Int = 0
+        var maxX: Int = w - coinBitmap.width
+        var minY: Int = 0
+        var maxY: Int = h - coinBitmap.width
+        val random = Random()
 
+        for (i in 0..5) {
+            var randomX: Int = random.nextInt(maxX - minX + 1) + minX
+            var randomY: Int = random.nextInt(maxY - minY + 1) + minY
+            coins.add(GoldCoin(randomX, randomY, false))
+        }
         coinsInitialized = true
     }
 
@@ -78,7 +92,7 @@ class Game(private var context: Context,view: TextView) {
 
     fun movePacmanLeft(pixels: Int) {
         //still within our boundaries?
-        if (pacx - pixels - pacBitmap.width < w) {
+        if (pacx - pixels > 0 ) {
             pacx = pacx - pixels
             doCollisionCheck()
             gameView!!.invalidate()
@@ -87,7 +101,7 @@ class Game(private var context: Context,view: TextView) {
 
     fun movePacmanUp(pixels: Int) {
         //still within our boundaries?
-        if (pacy - pixels - pacBitmap.height < h) {
+        if (pacy - pixels  > 0) {
             pacy = pacy - pixels
             doCollisionCheck()
             gameView!!.invalidate()
@@ -104,10 +118,12 @@ class Game(private var context: Context,view: TextView) {
     }
 
     //TODO check if the pacman touches a gold coin
+    
     //and if yes, then update the neccesseary data
     //for the gold coins and the points
     //so you need to go through the arraylist of goldcoins and
     //check each of them for a collision with the pacman
+
     fun doCollisionCheck() {
 
     }
