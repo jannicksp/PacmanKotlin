@@ -46,6 +46,10 @@ class GameView : View {
         if (!(game!!.coinsInitialized))
             game?.initializeGoldcoins()
 
+        //if enemies are not initiazlied
+        if (!(game!!.enemiesInitialized))
+            game?.initializeEnemy()
+
 
         //Making a new paint object
         val paint = Paint()
@@ -55,15 +59,16 @@ class GameView : View {
         canvas.drawBitmap(game!!.pacBitmap, game?.pacx!!.toFloat(),
                 game?.pacy!!.toFloat(), paint)
 
+        //draw the enemy
+        canvas.drawBitmap(game!!.enemyBitmap, game?.enemyx!!.toFloat(),
+                game?.enemyy!!.toFloat(), paint)
+
         //TODO loop through the list of goldcoins and draw them here
         for (coin in game!!.coins){
             if (coin.taken == false){
                 canvas.drawBitmap(game!!.coinBitmap, coin.coinX!!.toFloat(),
                         coin.coinY!!.toFloat(), paint)
-            }
-            else {
-
-            }
+        }
         }
         game?.doCollisionCheck()
         super.onDraw(canvas)

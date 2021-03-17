@@ -7,4 +7,9 @@
     <string name="move_left">Move left</string>
     <string name="move_up">Move up</string>
     <string name="move_down">Move down</string>
+    <string name="timer">Timer %1$d</string>
+    <string name="timeLeft">Time left: %1$d</string>
+    <string name="start">Start</string>
+    <string name="reset">Reset</string>
+    <string name="pause">Pause</string>
 </resources>
