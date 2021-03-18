@@ -27,14 +27,15 @@ class Game(private var context: Context,view: TextView) {
         var enemyBitmap: Bitmap
         var pacx: Int = 0
         var pacy: Int = 0
-        var enemyx: Int = 400
-        var enemyy: Int = 0
-        var enemyAlive = true
         var direction = 0
-        var directionEnemy = 1
         var counter: Int = 0
         var timer: Int = 30
         var running: Boolean = false
+        var enemyx: Int = 400
+        var enemyy: Int = 0
+        var enemyAlive = true
+        var directionEnemy = 1
+
         //did we initialize the coins?
         var coinsInitialized = false
         var enemiesInitialized = false
@@ -170,15 +171,7 @@ class Game(private var context: Context,view: TextView) {
         }
     }
 
-    fun distance(pacx: Int, pacy: Int, golx: Int, goly: Int): Double {
-
-        // calculate distance and return it
-        var cordinatation = (sqrt(((pacx - golx) * (pacx - golx) + (pacy - goly) * (pacy - goly)).toDouble()))
-
-        return cordinatation;
-    }
-
-    fun distanceEnemy(pacx: Int, pacy: Int, enemyx: Int, enemyy: Int): Double {
+    private fun distanceEnemy(pacx: Int, pacy: Int, enemyx: Int, enemyy: Int): Double {
 
         // calculate distance and return it
         var cordinatation = (sqrt(((pacx - enemyx) * (pacx - enemyx) + (pacy - enemyy) * (pacy - enemyy)).toDouble()))
@@ -187,15 +180,9 @@ class Game(private var context: Context,view: TextView) {
     }
 
 
-
-    //TODO check if the pacman touches a gold coin
-
-    //and if yes, then update the neccesseary data
-    //for the gold coins and the points
-    //so you need to go through the arraylist of goldcoins and
-    //check each of them for a collision with the pacman
-
     fun doCollisionCheck() {
+
+        //Coin collision
         for (coin in coins) {
             if((sqrt(pow((coin.coinX - pacx).toDouble(), 2.0)-pow((coin.coinY - pacy).toDouble(), 2.0)) < 100) && coin.taken == false )
             {
@@ -206,7 +193,14 @@ class Game(private var context: Context,view: TextView) {
             //check if all goldcoins are taken
             if (points === 10) {
                 running = false
-                Toast.makeText(context, "You won the game", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "You have won the game!", Toast.LENGTH_SHORT).show()
+            }
+        }
+        // Enemy collision
+        for (enemy in enemies) {
+            if (distanceEnemy(pacx, pacy, enemyx, enemyy) < 180) {
+                running = false
+                Toast.makeText(context, "You are now dead..", Toast.LENGTH_SHORT).show()
             }
         }
     }

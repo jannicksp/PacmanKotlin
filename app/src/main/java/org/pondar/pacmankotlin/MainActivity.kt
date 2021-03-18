@@ -120,13 +120,13 @@ class MainActivity : AppCompatActivity() {
             timer.text = getString(R.string.timer, game!!.counter)
             //moving pacman
             if (game!!.direction == 1) {
-                game?.movePacmanUp(50)
+                game?.movePacmanUp(30)
             } else if (game!!.direction == 2) {
-                game?.movePacmanDown(50)
+                game?.movePacmanDown(30)
             } else if (game!!.direction == 3) {
-                game?.movePacmanLeft(50)
+                game?.movePacmanLeft(30)
             } else if (game!!.direction == 4) {
-                game?.movePacmanRight(50)
+                game?.movePacmanRight(30)
             } else if (game!!.timer < 1 && game!!.running == true) {
                 game?.gameOver()
 

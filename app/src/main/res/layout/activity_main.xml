@@ -40,28 +40,30 @@
         android:id="@+id/gameView"
         android:layout_width="match_parent"
         android:layout_height="588dp"
+        android:layout_marginTop="40dp"
         android:layout_weight="1"></org.pondar.pacmankotlin.GameView>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="53dp"
+        android:orientation="horizontal"
+        android:background="@android:color/holo_red_light">>
 
         <Button
             android:id="@+id/reset"
-            android:layout_width="wrap_content"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:text="@string/reset" />
 
         <Button
             android:id="@+id/start"
-            android:layout_width="wrap_content"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:text="@string/start" />
 
         <Button
             android:id="@+id/pause"
-            android:layout_width="wrap_content"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:text="@string/pause" />
 
@@ -70,6 +72,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
         android:orientation="horizontal">
 
         <TextView
