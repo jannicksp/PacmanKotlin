@@ -1,5 +1,5 @@
 package org.pondar.pacmankotlin
 
-open class Enemy(var taken: Boolean, var isAlive: Boolean, var enemyx: Int, var enemyy: Int) {
+class Enemy(var taken: Boolean, var enemyAlive: Boolean, var enemyx: Int, var enemyy: Int) {
 
 }

@@ -38,10 +38,12 @@ class Game(private var context: Context,view: TextView) {
 
         //did we initialize the coins?
         var coinsInitialized = false
+        //did we initialize the enemies?
         var enemiesInitialized = false
 
-        //the list of goldcoins - initially empty
+        //the list of goldcoins
         var coins = ArrayList<GoldCoin>()
+        //the list of enemies
         var enemies = ArrayList<Enemy>()
         //a reference to the gameview
         private var gameView: GameView? = null
@@ -60,13 +62,13 @@ class Game(private var context: Context,view: TextView) {
     fun setGameView(view: GameView) {
         this.gameView = view
     }
-    //TODO initialize enemies also here
+    //initialize enemies also here
     fun initializeEnemy() {
         enemies.add(Enemy(false, true, 900, 900))
         enemiesInitialized = true
     }
 
-    //TODO initialize goldcoins also here
+    //initialize goldcoins also here
     fun initializeGoldcoins()
     {
         var minX: Int = 0
