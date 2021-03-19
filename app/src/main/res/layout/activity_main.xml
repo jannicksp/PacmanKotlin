@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="53dp"
         android:layout_alignParentBottom="true"
-        android:background="@android:color/holo_red_light">
+        android:background="#000">
 
         <Button
             android:id="@+id/moveLeft"
@@ -47,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="53dp"
         android:orientation="horizontal"
-        android:background="@android:color/holo_red_light">>
+        android:background="#000">
 
         <Button
             android:id="@+id/reset"
@@ -80,15 +80,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/points"
+            android:textColor="#fff"
             android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/timerLeft"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:text="@string/timeLeft"
-            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/timer"
@@ -96,7 +89,18 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:text="@string/timer"
+            android:textColor="#fff"
             android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/timerLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="@string/timeLeft"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
     </LinearLayout>
 
 

@@ -53,7 +53,7 @@ class GameView : View {
 
         //Making a new paint object
         val paint = Paint()
-        canvas.drawColor(Color.WHITE) //clear entire canvas to white color
+        canvas.drawColor(Color.BLACK) //clear entire canvas to white color
 
         //draw the pacman
         canvas.drawBitmap(game!!.pacBitmap, game?.pacx!!.toFloat(),

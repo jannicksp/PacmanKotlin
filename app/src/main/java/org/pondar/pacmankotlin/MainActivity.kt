@@ -1,5 +1,6 @@
 package org.pondar.pacmankotlin
 
+import android.content.Intent
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -147,10 +148,22 @@ class MainActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         val id = item.itemId
-        if (id == R.id.action_settings) {
-            Toast.makeText(this, "settings clicked", Toast.LENGTH_LONG).show()
+
+            // Share function
+        if (id == R.id.action_share) {
+            //Share content
+            val sendIntent: Intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, "Your highscore is: ${game?.points}")
+                type = "text/plain"
+            }
+            val shareIntent = Intent.createChooser(sendIntent, "Share highscore to..")
+            startActivity(shareIntent)
             return true
-        } else if (id == R.id.action_newGame) {
+
+            return true
+        }
+         else if (id == R.id.action_newGame) {
             Toast.makeText(this, "New Game clicked", Toast.LENGTH_LONG).show()
             game?.newGame()
             timer.text = getString(R.string.timer, game!!.counter)

@@ -19,7 +19,7 @@ import kotlin.math.sqrt
 class Game(private var context: Context,view: TextView) {
 
         private var pointsView: TextView = view
-        private var points : Int = 0
+        var points : Int = 0
 
         //bitmap of the pacman
         var pacBitmap: Bitmap
@@ -62,11 +62,6 @@ class Game(private var context: Context,view: TextView) {
     fun setGameView(view: GameView) {
         this.gameView = view
     }
-    //initialize enemies also here
-    fun initializeEnemy() {
-        enemies.add(Enemy(false, true, 900, 900))
-        enemiesInitialized = true
-    }
 
     //initialize goldcoins also here
     fun initializeGoldcoins()
@@ -83,6 +78,11 @@ class Game(private var context: Context,view: TextView) {
             coins.add(GoldCoin(randomX, randomY, false))
         }
         coinsInitialized = true
+    }
+    //initialize enemies also here
+    fun initializeEnemy() {
+        enemies.add(Enemy(false, true, 900, 900))
+        enemiesInitialized = true
     }
 
 
@@ -176,9 +176,7 @@ class Game(private var context: Context,view: TextView) {
     private fun distanceEnemy(pacx: Int, pacy: Int, enemyx: Int, enemyy: Int): Double {
 
         // calculate distance and return it
-        var cordinatation = (sqrt(((pacx - enemyx) * (pacx - enemyx) + (pacy - enemyy) * (pacy - enemyy)).toDouble()))
-
-        return cordinatation;
+        return (sqrt(((pacx - enemyx) * (pacx - enemyx) + (pacy - enemyy) * (pacy - enemyy)).toDouble()));
     }
 
 
@@ -195,14 +193,14 @@ class Game(private var context: Context,view: TextView) {
             //check if all goldcoins are taken
             if (points === 10) {
                 running = false
-                Toast.makeText(context, "You have won the game!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "You have won the game!", Toast.LENGTH_LONG).show()
             }
         }
         // Enemy collision
         for (enemy in enemies) {
             if (distanceEnemy(pacx, pacy, enemyx, enemyy) < 180) {
                 running = false
-                Toast.makeText(context, "You are now dead..", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "You are now dead..", Toast.LENGTH_LONG).show()
             }
         }
     }
